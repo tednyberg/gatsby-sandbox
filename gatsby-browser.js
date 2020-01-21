@@ -9,8 +9,6 @@
 // Här kan vi exportera API:er som ska användas på klientsidan, dvs i webbläsaren som har
 // laddat de statiska HTML-filerna
 
-const React = require("react")
-
 // Log when client route changes
 exports.onRouteUpdate = ({ location, prevLocation }) => {
   console.log(`Route path changed to '${location.pathname}' from '${prevLocation ? prevLocation.pathname : null}'`);

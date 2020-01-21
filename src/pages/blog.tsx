@@ -19,7 +19,7 @@ const BlogListing = (props: Props) => (
     <h1>Blogg med {props.data.allSitePage.edges.length} inlägg</h1>
     <ul>
       {props.data.allSitePage.edges.map((edge: any) =>
-        <li><Link to={BlogService.getBlogPostUrl(edge.node.context.post as BlogPost)}>{edge.node.context.post.title}</Link></li>
+        <li><Link to={BlogService.getBlogPostUrl(edge.node.context.post as BlogPost)}>{edge.node.context.post.title}</Link> <small>{edge.node.context.post.date}</small></li>
       )}
     </ul>
   </Layout>

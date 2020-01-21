@@ -12,6 +12,7 @@ const BlogPost = (props: Props) => (
   <Layout>
     <SEO title={props.pageContext.post.title} />
     <h1>{props.pageContext.post.title}</h1>
+    <small>{props.pageContext.post.date}</small>
     <p>{props.pageContext.post.description}</p>
     <Link to="/blog">Tillbaka till bloggen</Link>
   </Layout>

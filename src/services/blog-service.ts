@@ -17,7 +17,12 @@ export default class BlogService {
         // Combine API and mock blog posts
         var promise = new Promise<Array<BlogPost>>((accept, reject) => {
             this.getContentfulBlogPosts(graphql).then(posts => {
-                accept(posts.concat(this.getMockBlogPosts()));
+
+                const allBlogPosts = posts.concat(this.getMockBlogPosts());
+
+                allBlogPosts.sort((a, b) => (a.date > b.date) ? 1 : -1);
+
+                accept(allBlogPosts);
             });
         });
 

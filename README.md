@@ -14,6 +14,7 @@
 
 ## Härnäst för prototyp
 * Förhandsgranskning med hjälp av Contentful Preview API
+* Markdown-innehåll inklusive länkar till andra sidor och infogade bilder
 
 ### Mer att testa
 * `gatsby-plugin-sitemap` för sitemaps
