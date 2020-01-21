@@ -6,15 +6,20 @@ import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+import BlogPost from "../models/BlogPost"
 import BlogService from "../services/blog-service"
 
-const BlogListing = ({ data }) => (
+interface Props {
+  data: any;
+}
+
+const BlogListing = (props: Props) => (
   <Layout>
     <SEO title="Blog" />
-    <h1>Blogg med {data.allSitePage.edges.length} inlägg</h1>
+    <h1>Blogg med {props.data.allSitePage.edges.length} inlägg</h1>
     <ul>
-      {data.allSitePage.edges.map((edge) =>
-        <li><Link to={BlogService.getBlogPostUrl(edge.node.context.post)}>{edge.node.context.post.title}</Link></li>
+      {props.data.allSitePage.edges.map((edge: any) =>
+        <li><Link to={BlogService.getBlogPostUrl(edge.node.context.post as BlogPost)}>{edge.node.context.post.title}</Link></li>
       )}
     </ul>
   </Layout>

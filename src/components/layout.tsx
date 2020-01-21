@@ -12,7 +12,11 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+interface Props {
+  children?: any
+}
+
+const Layout = (props: Props) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -34,7 +38,7 @@ const Layout = ({ children }) => {
           paddingTop: 0,
         }}
       >
-        <main>{children}</main>
+        <main>{props.children}</main>
         <footer>
           © {new Date().getFullYear()} T&amp;G
         </footer>

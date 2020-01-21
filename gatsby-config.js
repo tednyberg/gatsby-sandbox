@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Gatsby med T&G`,
     description: `Proof-of-concept med Gatsby.`,
-    author: `@gatsbyjs`,
+    author: `@tednyberg`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -11,6 +11,14 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: false, // defaults to false
+        jsxPragma: `React`, // defaults to "React"
+        allExtensions: false, // defaults to false
       },
     },
     `gatsby-transformer-sharp`,
@@ -27,6 +35,7 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

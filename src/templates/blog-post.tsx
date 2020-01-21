@@ -4,11 +4,15 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const BlogPost = ({ pageContext }) => (
+interface Props {
+  pageContext: any
+}
+
+const BlogPost = (props: Props) => (
   <Layout>
-    <SEO title={pageContext.post.title} />
-    <h1>{pageContext.post.title}</h1>
-    <p>{pageContext.post.description}</p>
+    <SEO title={props.pageContext.post.title} />
+    <h1>{props.pageContext.post.title}</h1>
+    <p>{props.pageContext.post.description}</p>
     <Link to="/blog">Tillbaka till bloggen</Link>
   </Layout>
 )

@@ -1,15 +1,18 @@
-module.exports = {
+import BlogPost from "../models/BlogPost"
 
-    getBlogPostUrl: function(post) {
+export default class BlogService {
+
+    static getBlogPostUrl(post: BlogPost): string {
+
         const postDate = new Date(post.date);
 
         const year = postDate.getFullYear(),
               month = postDate.getMonth()+1;
 
         return `/blog/${year}/${month}/${post.slug}/`;
-    },
+    }
 
-    getBlogPosts: function() {
+    static getBlogPosts() : Array<BlogPost> {
 
         // I praktiken skulle här ske ett API-anrop för att hämta alla bloginlägg
         return [{
