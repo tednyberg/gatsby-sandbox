@@ -1,4 +1,5 @@
 import BlogPost from "../models/BlogPost"
+import { promised } from "q";
 
 export default class BlogService {
 
@@ -12,25 +13,75 @@ export default class BlogService {
         return `/blog/${year}/${month}/${post.slug}/`;
     }
 
-    static getBlogPosts() : Array<BlogPost> {
+    static getBlogPosts(graphql: any) : Promise<Array<BlogPost>> {
+        // Combine API and mock blog posts
+        var promise = new Promise<Array<BlogPost>>((accept, reject) => {
+            this.getContentfulBlogPosts(graphql).then(posts => {
+                accept(posts.concat(this.getMockBlogPosts()));
+            });
+        });
 
-        // I praktiken skulle här ske ett API-anrop för att hämta alla bloginlägg
+        return promise;
+    }
+
+    static getContentfulBlogPosts(graphql: any) : Promise<Array<BlogPost>> {
+
+        const promise = new Promise<Array<BlogPost>>((resolve, reject) => {
+            graphql(`query BlogPosts {
+                allContentfulBlogPost  {
+                    edges {
+                        node {
+                            id,
+                            title,
+                            description {
+                                description
+                            }
+                            slug,
+                            date,
+                            mainBody {
+                                mainBody
+                            }
+                        }
+                    }
+                }
+            }`).then((result: any) => {
+                
+                const posts = new Array<BlogPost>();
+
+                result.data.allContentfulBlogPost.edges.forEach((edge: any) => {
+                    posts.push({
+                        id: edge.node.id,
+                        title: edge.node.title,
+                        description: edge.node.description.description,
+                        slug: edge.node.slug,
+                        date: edge.node.date
+                    })
+                });
+
+                resolve(posts);
+            });
+        });
+
+        return promise;
+    }
+
+    static getMockBlogPosts() : Array<BlogPost> {
         return [{
-            "id": 1,
+            "id": "mock-1",
             "title": "Första inlägget",
             "description": "Lorem ipsum.",
             "slug": "forsta-inlagget",
             "date": "2020-01-04"
         },
         {
-            "id": 2,
+            "id": "mock-2",
             "title": "Andra inlägget",
             "description": "Lorem ipsum.",
             "slug": "andra-inlagget",
             "date": "2020-01-06"
         },
         {
-            "id": 3,
+            "id": "mock-3",
             "title": "Tredje inlägget",
             "description": "Lorem ipsum.",
             "slug": "ett-helt-annat-url-segment",

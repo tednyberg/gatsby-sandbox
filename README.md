@@ -10,6 +10,10 @@
 * lade till `gatsby-plugin-typescript`-paketet och lade till det bland `plugins` i `gatsby-config.js`
 * Skapade några statiska sidor under `src/pages` samt en mall under `src/templates`
 * Lade till några mockup-blogginlägg i `gatsby-node.js`
+* Lade till `gatsby-source-contentful`-paketet för att hämta blogginlägg från en trial-version av Contentful
+
+## Härnäst för prototyp
+* Förhandsgranskning med hjälp av Contentful Preview API
 
 ### Mer att testa
 * `gatsby-plugin-sitemap` för sitemaps

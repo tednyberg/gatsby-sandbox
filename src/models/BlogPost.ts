@@ -3,7 +3,7 @@ export default class BlogPost {
         
     }
 
-    id = 0;
+    id = "";
     title = "";
     description = "";
     slug = "";

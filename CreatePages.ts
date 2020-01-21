@@ -8,27 +8,33 @@ interface Props {
 }
 
 export const createPages: GatsbyCreatePages = async (props: Props) => {
-  const { createPage } = props.boundActionCreators
+    const { createPage } = props.boundActionCreators
 
-  const blogPosts = BlogService.getBlogPosts();
+    const blogPostTemplate = resolve("./src/templates/blog-post.tsx");
 
-  const blogPostTemplate = resolve("./src/templates/blog-post.tsx");
+    var promise = new Promise((resolve, reject) => {
+        BlogService.getBlogPosts(props.graphql).then(blogPosts => {
+            blogPosts.forEach(post => {
+    
+                console.log(`Adding page ${post.slug}...`);
+    
+                const path = BlogService.getBlogPostUrl(post);
+    
+                createPage({
+                    path,
+                    component: blogPostTemplate,
+                    // In your blog post template's graphql query, you can use path
+                    // as a GraphQL variable to query for data from the markdown file.
+                    // Path is automatically included in context
+                    context: {
+                        post
+                    },
+                });
+            });
 
-  blogPosts.forEach(post => {
+            resolve();
+        });
+    });
 
-      console.log(`Adding page ${post.slug}...`);
-
-      const path = BlogService.getBlogPostUrl(post);
-
-      createPage({
-          path,
-          component: blogPostTemplate,
-          // In your blog post template's graphql query, you can use path
-          // as a GraphQL variable to query for data from the markdown file.
-          // Path is automatically included in context
-          context: {
-              post
-          },
-      });
-  });
+    return promise;
 }
