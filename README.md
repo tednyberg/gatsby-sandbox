@@ -1,5 +1,10 @@
 # Gatsby Sandbox
+
+## Produktionsmiljö
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4dedf9af-e9d5-4a01-9720-8d652b88a3c4/deploy-status)](https://app.netlify.com/sites/gatsby-sandbox/deploys)
+
+## Förhandsgranskningsmiljö
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fec68423-f7dc-4a53-9344-1dc3bc4dcd5a/deploy-status)](https://app.netlify.com/sites/gatsby-sandbox-preview/deploys)
 
 ### Sammanfattning av uppsättning
 * installerade Gatsby med deras "hello world"-boilerplate (med yarn som pakethanterare)
