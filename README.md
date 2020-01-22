@@ -17,13 +17,18 @@
 * Lade till några mockup-blogginlägg i `gatsby-node.js`
 * Lade till `gatsby-source-contentful`-paketet för att hämta blogginlägg från en trial-version av Contentful
 * Lade till `netlify.toml` för Netlify-konfiguration
+* Lade till `gatsby-transformer-remark` för att konvertera Markdown-innehåll från Contentful
 
 ## Härnäst för prototyp
-* Förhandsgranskning med hjälp av Contentful Preview API
-* Markdown-innehåll inklusive länkar till andra sidor och infogade bilder
+* Förhandsgranskning med hjälp av Contentful Preview API (✔)
+* Markdown-innehåll med hjälp av `gatsby-transformer-remark`
+* Länkade filer i Markdown-innehåll med `gatsby-remark-copy-linked-files`
+* Bilder i Markdown-innehåll med `gatsby-remark-images`
+* Bilder via Cloudinary med `gatsby-transformer-cloudinary` 
 
 ### Mer att testa
 * `gatsby-plugin-sitemap` för sitemaps
 * Klientspecifika bibliotek (exempelvis sådana som behöver `window`): https://www.gatsbyjs.org/docs/using-client-side-only-packages/
 * Kolla om Netlify är ett relevant alternativ: https://www.netlify.com/
 * `gatsby-plugin-feed` för RSS-flöde(n)
+* "On-demand template" för att kunna förhandsgranska ett visst Contentful-innehåll utan att omgenerera sajten (exempelvis blogginlägg)

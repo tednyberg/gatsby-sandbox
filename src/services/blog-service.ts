@@ -44,7 +44,10 @@ export default class BlogService {
                             slug,
                             date,
                             mainBody {
-                                mainBody
+                                childMarkdownRemark {
+                                    html,
+                                    excerpt
+                                }
                             }
                         }
                     }
@@ -54,12 +57,14 @@ export default class BlogService {
                 const posts = new Array<BlogPost>();
 
                 result.data.allContentfulBlogPost.edges.forEach((edge: any) => {
+
                     posts.push({
                         id: edge.node.id,
                         title: edge.node.title,
                         description: edge.node.description.description,
                         slug: edge.node.slug,
-                        date: edge.node.date
+                        date: edge.node.date,
+                        mainBody: edge.node.mainBody?.childMarkdownRemark?.html // Optional chaining requires TypeScript 3.7+ (if not available in VS Code, hit CTRL+SHIFT+P and "Select TypeScript Version" and select the workspace version)
                     })
                 });
 
@@ -76,21 +81,24 @@ export default class BlogService {
             "title": "Första inlägget",
             "description": "Lorem ipsum.",
             "slug": "forsta-inlagget",
-            "date": "2020-01-04"
+            "date": "2020-01-04",
+            "mainBody": ""
         },
         {
             "id": "mock-2",
             "title": "Andra inlägget",
             "description": "Lorem ipsum.",
             "slug": "andra-inlagget",
-            "date": "2020-01-06"
+            "date": "2020-01-06",
+            "mainBody": ""
         },
         {
             "id": "mock-3",
             "title": "Tredje inlägget",
             "description": "Lorem ipsum.",
             "slug": "ett-helt-annat-url-segment",
-            "date": "2020-01-08"
+            "date": "2020-01-08",
+            "mainBody": ""
         }]
     }
 }

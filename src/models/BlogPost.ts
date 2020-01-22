@@ -1,3 +1,4 @@
+/** Represents a blog post, for example for posts sourced from Contentful */
 export default class BlogPost {
     constructor() {
         
@@ -8,4 +9,7 @@ export default class BlogPost {
     description = "";
     slug = "";
     date = "";
+
+    /** Markdown content */
+    mainBody = "";
 }
