@@ -12,7 +12,7 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Gatsby-test" />
     <h1>Välkommen.</h1>
-    <p>Det här är en statisk hemsida byggd med Gatsby.</p>
+    <p>Det här är en statisk hemsida byggd med Gatsby, med innehåll delvis från Contentful och drift i Netlify.</p>
     <p>Klockan är just nu: <Clock /></p>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
