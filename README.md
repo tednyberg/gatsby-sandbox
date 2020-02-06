@@ -19,16 +19,19 @@
 * Lade till `netlify.toml` för Netlify-konfiguration
 * Lade till `gatsby-transformer-remark` för att konvertera Markdown-innehåll från Contentful
 
-## Härnäst för prototyp
-* Förhandsgranskning med hjälp av Contentful Preview API (✔)
+## Testat i prototyp
+* Förhandsgranskning med hjälp av Contentful Preview API
 * Markdown-innehåll med hjälp av `gatsby-transformer-remark`
+* Source plugin för Heartcore, med stöd av `@umbraco/headless-client` och `gatsby-node-helpers`
+
+### Mer att testa
 * Länkade filer i Markdown-innehåll med `gatsby-remark-copy-linked-files`
 * Bilder i Markdown-innehåll med `gatsby-remark-images`
 * Bilder via Cloudinary med `gatsby-transformer-cloudinary` 
-
-### Mer att testa
 * `gatsby-plugin-sitemap` för sitemaps
 * Klientspecifika bibliotek (exempelvis sådana som behöver `window`): https://www.gatsbyjs.org/docs/using-client-side-only-packages/
 * Kolla om Netlify är ett relevant alternativ: https://www.netlify.com/
 * `gatsby-plugin-feed` för RSS-flöde(n)
 * "On-demand template" för att kunna förhandsgranska ett visst Contentful-innehåll utan att omgenerera sajten (exempelvis blogginlägg)
+* Utvärdera prestanda med **Google Lighthouse**
+* "Critical CSS"-stöd i Gatsby

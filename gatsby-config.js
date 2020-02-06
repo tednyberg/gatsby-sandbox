@@ -51,6 +51,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-heartcore`,
+      options: {
+        projectAlias: `teds-unassuming-red-panda`,
+        apiKey: ``
+      }
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `it7n5memd14h`,
